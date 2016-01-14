@@ -1,0 +1,12 @@
+{
+  "title": "Copy Text without Selecting",
+  "name": "copy-text-without-selecting",
+  "version": "0.0.1",
+  "description": "Copy text without selecting. Easy and fast copy tool.",
+  "main": "index.js",
+  "author": "YujiSoftware",
+  "engines": {
+    "firefox": ">=38.0a1"
+  },
+  "license": "MIT"
+}
