@@ -1,9 +1,18 @@
-var self = require('sdk/self');
+var clipboard = require("sdk/clipboard");
+var runtime = require("sdk/system/runtime");
+var self = require("sdk/self");
 
-// a dummy function, to show how tests work.
-// to see how to test this function, look at test/test-index.js
-function dummy(text, callback) {
-  callback(text);
-}
-
-exports.dummy = dummy;
+var cm = require("sdk/context-menu");
+cm.Item({
+  label: "コピー",
+  accesskey: "C",
+  context:
+    cm.PredicateContext(function(context) {
+      return context.selectionText == null && !context.isEditable;
+    }),
+  contentScriptFile: self.data.url("menu.js"),
+  data: runtime.OS == "WINNT" ? "\r\n" : "\n",
+  onMessage: function(text){
+    clipboard.set(text);
+  }
+});
