@@ -12,7 +12,7 @@ function getText(node, lineSeparator){
     if(node.nodeType == Node.TEXT_NODE){
       text += node.nodeValue.trim();
     }else if(node.nodeType == Node.ELEMENT_NODE){
-      if(node.nodeName != "SCRIPT"){
+      if(node.offsetWidth > 0 || node.offsetHeight > 0 || node.getClientRects().length > 0){
         var childText = ""; 
         if(node.firstChild != null){
           if(node.parentNode.nodeName == "SELECT" && node.nodeName == "OPTION"){
@@ -28,10 +28,10 @@ function getText(node, lineSeparator){
         if(childText != ""){
           text += childText;
         }
-      }
     
-      if(node.nodeName == "BR" || window.getComputedStyle(node, null).display == "block"){
-        text += lineSeparator;
+        if(node.nodeName == "BR" || window.getComputedStyle(node, null).display == "block"){
+          text += lineSeparator;
+        }
       }
     }
 
