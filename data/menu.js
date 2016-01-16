@@ -38,5 +38,5 @@ function getText(node, lineSeparator){
     node = node.nextSibling;
   }
 
-  return text.trim();
+  return text;
 }
