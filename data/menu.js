@@ -13,12 +13,21 @@ function getText(node, lineSeparator){
       text += node.nodeValue.trim();
     }
 
-    if(node.nodeName != "SCRIPT" && node.nodeName != "NOSCRIPT" && isVisible(node)){
+    if(node.nodeName != "SCRIPT" && isVisible(node)){
+      var childText = ""; 
       if(node.firstChild != null){
-        var childText = getText(node.firstChild, lineSeparator);
-        if(childText != ""){
-          text += childText;
+        if(node.parentNode.nodeName == "SELECT" && node.nodeName == "OPTION"){
+          // Get selected option text only
+          if(node.parentNode[node.parentNode.selectedIndex] == node){
+            childText = getText(node.firstChild, lineSeparator);
+          }
+        }else{      
+          childText = getText(node.firstChild, lineSeparator);
         }
+      }
+      
+      if(childText != ""){
+        text += childText;
       }
     }
     
