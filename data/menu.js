@@ -29,7 +29,7 @@ function getText(node, lineSeparator){
           text += childText;
         }
     
-        if(node.nodeName == "BR" || window.getComputedStyle(node, null).display == "block"){
+        if(node.nodeName == "BR" || window.getComputedStyle(node, null).display.indexOf("inline") === -1){
           text += lineSeparator;
         }
       }
@@ -38,5 +38,5 @@ function getText(node, lineSeparator){
     node = node.nextSibling;
   }
 
-  return text;
+  return text.trim();
 }
