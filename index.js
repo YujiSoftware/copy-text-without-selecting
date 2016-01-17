@@ -4,15 +4,15 @@ var self = require("sdk/self");
 
 var cm = require("sdk/context-menu");
 cm.Item({
-  label: "コピー",
-  accesskey: "C",
-  context:
-    cm.PredicateContext(function(context) {
-      return context.selectionText == null && !context.isEditable;
-    }),
-  contentScriptFile: self.data.url("menu.js"),
-  data: runtime.OS == "WINNT" ? "\r\n" : "\n",
-  onMessage: function(text){
-    clipboard.set(text);
-  }
+    label: "コピー",
+    accesskey: "C",
+    context:
+        cm.PredicateContext(function(context) {
+            return context.selectionText == null && !context.isEditable;
+        }),
+    contentScriptFile: self.data.url("menu.js"),
+    data: runtime.OS == "WINNT" ? "\r\n" : "\n",
+    onMessage: function(text){
+        clipboard.set(text);
+    }
 });
