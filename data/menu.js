@@ -2,6 +2,21 @@ self.on('click', function(node, data){
     var text = getText(node.firstChild, data);
     if(text.length > 0){
         self.postMessage(text.trim());
+        
+        var rect = node.getBoundingClientRect();
+        var frame = document.createElement("div");
+        frame.style.position = "absolute";
+        frame.style.top = (rect.top + window.scrollY) + "px";
+        frame.style.left = (rect.left + window.scrollX) + "px";
+        frame.style.width = (rect.width - 4) + "px";
+        frame.style.height = (rect.height - 4) + "px";
+        frame.style.border = "solid";
+        frame.style.borderWidth = "2px";
+        frame.style.borderColor = "gold";
+        frame.style.zIndex = "99999";
+        document.body.appendChild(frame);
+        setTimeout(function(){ document.body.removeChild(frame); }, 500);
+        
         console.log(text.trim());
     }
 });
