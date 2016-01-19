@@ -10,13 +10,13 @@ self.on('click', function(node, data){
         frame.style.left = (rect.left + window.scrollX) + "px";
         frame.style.width = (rect.width - 4) + "px";
         frame.style.height = (rect.height - 4) + "px";
-        frame.style.border = "solid";
-        frame.style.borderWidth = "2px";
-        frame.style.borderColor = "gold";
+        frame.style.border = "solid 2px gold";
+        frame.style.borderRadius = "5px";
         frame.style.zIndex = "99999";
         document.body.appendChild(frame);
-        setTimeout(function(){ document.body.removeChild(frame); }, 500);
         
+        $(frame).fadeOut(800, "swing", function(){ this.remove(); });
+                
         console.log(text.trim());
     }
 });
