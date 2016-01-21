@@ -1,10 +1,11 @@
 var clipboard = require("sdk/clipboard");
 var runtime = require("sdk/system/runtime");
 var self = require("sdk/self");
+var _ = require("sdk/l10n").get;
 
 var cm = require("sdk/context-menu");
 cm.Item({
-    label: "コピー",
+    label: _("copy"),
     accesskey: "C",
     context:
         cm.PredicateContext(function(context) {
