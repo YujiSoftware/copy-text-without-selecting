@@ -15,7 +15,11 @@ self.on('click', function(node, data){
         frame.style.zIndex = "99999";
         document.body.appendChild(frame);
         
-        $(frame).fadeOut(800, "swing", function(){ this.remove(); });
+        $(frame).fadeIn(200, "swing", function(){
+            $(this).fadeOut(600, "swing", function(){
+                this.remove(); 
+            })
+        });
                 
         console.log(text.trim());
     }
