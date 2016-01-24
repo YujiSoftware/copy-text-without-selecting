@@ -1,7 +1,7 @@
 {
   "title": "Copy Text without Selecting",
   "name": "copy-text-without-selecting",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Copy text without selecting. Easy and fast copy tool.",
   "icon": "resource://copy-text-without-selecting/data/icon.png",
   "main": "index.js",
