@@ -31,10 +31,7 @@ function getText(node, lineSeparator){
         if(node.nodeType == Node.TEXT_NODE){
             text += node.nodeValue.trim();
         }else if(node.nodeType == Node.ELEMENT_NODE){
-            var isVisible = 
-                node.offsetWidth > 0 || node.offsetHeight > 0 || node.getClientRects().length > 0;
-            
-            if(isVisible){
+            if($(node).is(':visible')){
                 var childText = ""; 
                 if(node.firstChild != null){
                     if(node.parentNode.nodeName == "SELECT" && node.nodeName == "OPTION"){
