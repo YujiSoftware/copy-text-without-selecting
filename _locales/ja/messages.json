@@ -1,5 +1,8 @@
 {
   "copy": {
     "message": "コピー(&C)"
+  },
+  "meta_key": {
+    "message": "コピー操作: "
   }
 }

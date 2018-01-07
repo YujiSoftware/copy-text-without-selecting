@@ -5,9 +5,16 @@
   "description": "Copy text with Alt-Click. Easy and fast copy tool.",
   "default_locale": "en",
   
+  "applications": {
+    "gecko": {
+      "id": "@copy-text-without-selecting"
+    }
+  },
+  
   "permissions" : [
     "http://*/*", 
     "https://*/*", 
+    "storage", 
     "clipboardWrite"
   ],
   
@@ -28,5 +35,9 @@
             ],
             "run_at" : "document_start"
         }
-    ]
+    ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  }
 }
