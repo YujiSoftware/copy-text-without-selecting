@@ -19,6 +19,7 @@ function copyCommand(clickedElement){
     frame.style.border = "solid 2px gold";
     frame.style.borderRadius = "5px";
     frame.style.zIndex = "99999";
+    frame.style.pointerEvents = "none";
     document.body.appendChild(frame);
     
     $(frame).fadeIn(300, "swing").delay(500).fadeOut(500, "swing");
