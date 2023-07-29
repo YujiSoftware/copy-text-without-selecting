@@ -47,21 +47,26 @@
         document.body.appendChild(frame);
         
         $(frame).fadeIn(300, "swing").delay(500).fadeOut(500, "swing");
-        
-        // console.log(text.trim());
     }
 
-    function copy(text){
-        var textArea = document.createElement("textarea");
-        textArea.style.cssText = "position: absolute; left: -100%;";
+    async function copy(text){
+        if (navigator.clipboard) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
 
+        // fallback (for http)
+        const textArea = document.createElement("textarea");
+        textArea.style.cssText = "position: absolute; left: -100%;";
         try{
             document.body.appendChild(textArea);
 
             textArea.value = text;
             textArea.select();
         
-            document.execCommand("copy");
+            if (!document.execCommand("copy")) {
+                console.error("Copy failed.");
+            }
         }finally{
             document.body.removeChild(textArea);
         }
