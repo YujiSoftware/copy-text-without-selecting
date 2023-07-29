@@ -34,6 +34,9 @@
         var frame = document.createElement("div");
         Object.assign(frame.style, {
             position: "absolute",
+            margin: "initial",
+            padding: "initial",
+            background: "initial",
             top: (rect.top + window.scrollY) + "px",
             left: (rect.left + window.scrollX) + "px",
             width: (rect.width - 4) + "px",
