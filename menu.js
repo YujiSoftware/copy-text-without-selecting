@@ -26,9 +26,25 @@
         });
     };
 
+    function getText(node) {
+        if (node.nodeType == Node.TEXT_NODE) {
+            return getText(node.parentNode);
+        }
+
+        switch (node.nodeName.toUpperCase()) {
+            case "INPUT":
+            case "TEXTAREA":
+                return node.value;
+            case "SELECT":
+                return Array.from(node.selectedOptions).map(o => o.innerText).join("\n")
+        }
+
+        return node.innerText;
+    }
+
     function copyCommand(clickedElement) {
-        var text = getText(clickedElement.firstChild, "\r\n");
-        copy(text.trim());
+        var text = getText(clickedElement);
+        copy(text);
 
         var rect = clickedElement.getBoundingClientRect();
         var frame = document.createElement("div");
