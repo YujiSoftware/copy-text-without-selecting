@@ -7,7 +7,7 @@ function saveOptions() {
 function restoreOptions() {
   chrome.storage.sync.get({
     metaKey: 'Alt',
-  }, function(items) {
+  }, function (items) {
     document.getElementById("meta_key").value = items.metaKey;
   });
 }

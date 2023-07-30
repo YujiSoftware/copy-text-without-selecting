@@ -1,27 +1,27 @@
-function getText(node, lineSeparator){
+function getText(node, lineSeparator) {
     var text = "";
-    while(node != null){
-        if(node.nodeType == Node.TEXT_NODE){
+    while (node != null) {
+        if (node.nodeType == Node.TEXT_NODE) {
             text += node.nodeValue.trim();
-        }else if(node.nodeType == Node.ELEMENT_NODE){
-            if($(node).is(':visible')){
-                var childText = ""; 
-                if(node.firstChild != null){
-                    if(node.parentNode.nodeName == "SELECT" && node.nodeName == "OPTION"){
+        } else if (node.nodeType == Node.ELEMENT_NODE) {
+            if ($(node).is(':visible')) {
+                var childText = "";
+                if (node.firstChild != null) {
+                    if (node.parentNode.nodeName == "SELECT" && node.nodeName == "OPTION") {
                         // Get selected option text only
-                        if(node.parentNode[node.parentNode.selectedIndex] == node){
+                        if (node.parentNode[node.parentNode.selectedIndex] == node) {
                             childText = getText(node.firstChild, lineSeparator);
                         }
-                    }else{
+                    } else {
                         childText = getText(node.firstChild, lineSeparator);
                     }
                 }
 
-                if(childText != ""){
+                if (childText != "") {
                     text += childText;
                 }
 
-                if(node.nodeName == "BR" || window.getComputedStyle(node, null).display.indexOf("inline") === -1){
+                if (node.nodeName == "BR" || window.getComputedStyle(node, null).display.indexOf("inline") === -1) {
                     text += lineSeparator;
                 }
             }
