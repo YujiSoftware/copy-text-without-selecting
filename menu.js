@@ -60,12 +60,17 @@
             border: "solid 2px gold",
             borderRadius: "5px",
             zIndex: "99999",
-            pointerEvents: "none"
+            pointerEvents: "none",
         });
 
         document.body.appendChild(frame);
-
-        $(frame).fadeIn(300, "swing").delay(500).fadeOut(500, "swing");
+        setTimeout(() => {
+            frame.addEventListener("transitionend", (event) => {
+                frame.remove();
+            });
+            frame.style.opacity = "0";
+            frame.style.transition = "opacity ease-out 0.5s";
+        }, 500);
     }
 
     async function copy(text) {

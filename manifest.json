@@ -29,7 +29,6 @@
                 "https://*/*"
             ],
             "js": [
-                "jquery-3.3.1.min.js",
                 "menu.js"
             ],
             "run_at" : "document_start"
